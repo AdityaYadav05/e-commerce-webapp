@@ -2115,6 +2115,304 @@
     .page { display: block !important; }
     body { background: white; }
   }
+
+  /* ========================================================
+     ENHANCED RESPONSIVE FIXES & IMPROVEMENTS
+  ======================================================== */
+
+  /* ---- TOAST NOTIFICATION ---- */
+  .toast {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--navy);
+    color: white;
+    padding: 11px 22px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: var(--shadow-lg);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    border: 1px solid var(--primary);
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ---- WISHLIST HEART TOGGLE ---- */
+  .wishlist-btn.loved { color: var(--red); }
+
+  /* ---- QTY STEPPER INTERACTIVE ---- */
+  .qty-btn:hover { background: var(--primary); color: white; }
+  .qty-btn:active { transform: scale(0.93); }
+
+  /* ---- ADD TO CART ANIMATION ---- */
+  .add-cart-btn.adding {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+  @keyframes cartBounce {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.07); }
+  }
+  .add-cart-btn.adding { animation: cartBounce 0.35s ease; }
+
+  /* ---- PRODUCT GRID responsive fix ---- */
+  .products-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .products-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .products-grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+
+  /* ---- HERO fully fluid ---- */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; padding: 28px 0 20px; }
+    .hero-image { display: none; }
+    .hero-text h1 { font-size: 30px; }
+  }
+
+  /* ---- IMPROVED TABLET 768-1024 ---- */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .products-grid-5 { grid-template-columns: repeat(3, 1fr); }
+    .products-grid-4 { grid-template-columns: repeat(3, 1fr); }
+    .products-grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+    .pdp-layout { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .pdp-info h1 { font-size: 17px; }
+  }
+
+  /* ---- MOBILE 480-768 ---- */
+  @media (max-width: 768px) {
+    /* Fix hero image hiding gracefully */
+    .hero-image { display: none !important; }
+    .hero-inner { grid-template-columns: 1fr !important; }
+
+    /* Sticky header offset recalculation */
+    .site-header { top: 40px; }
+    
+    /* Category grid: 4 cols on mobile */
+    .category-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 8px !important; }
+
+    /* Products 2-col grid on mobile */
+    .products-grid-3,
+    .products-grid-4,
+    .products-grid-5 { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+
+    /* Footer: single col */
+    .footer-grid { grid-template-columns: 1fr !important; }
+    .footer-col { display: none; }
+    .footer-brand { display: block; }
+
+    /* PDP one column */
+    .pdp-layout { grid-template-columns: 1fr !important; }
+
+    /* Cart one column */
+    .cart-layout { grid-template-columns: 1fr !important; }
+    .price-summary { position: static !important; }
+
+    /* Checkout one column */
+    .checkout-layout { grid-template-columns: 1fr !important; }
+    .address-cards { grid-template-columns: 1fr !important; }
+    .form-grid { grid-template-columns: 1fr !important; }
+    .payment-methods { grid-template-columns: 1fr !important; }
+
+    /* Account */
+    .account-layout { grid-template-columns: 1fr !important; }
+
+    /* Seller dashboard */
+    .kpi-cards { grid-template-columns: repeat(2,1fr) !important; }
+    .seller-layout { grid-template-columns: 1fr !important; }
+
+    /* PLP */
+    .plp-layout { grid-template-columns: 1fr !important; }
+
+    /* Review summary */
+    .review-summary { grid-template-columns: 1fr !important; }
+
+    /* Step labels on mobile checkout hidden (too narrow) */
+    .step-label { display: none; }
+
+    /* Bottom nav padding for all pages */
+    .page { padding-bottom: 68px; }
+
+    /* Scroll row smaller cards */
+    .scroll-row .product-card { min-width: 150px; max-width: 150px; }
+
+    /* Adjust font sizes for small screens */
+    .pdp-info h1 { font-size: 16px !important; }
+    .pdp-price-block .main-price { font-size: 22px !important; }
+  }
+
+  /* ---- TINY MOBILE < 380px ---- */
+  @media (max-width: 380px) {
+    .category-grid { grid-template-columns: repeat(4, 1fr) !important; gap: 5px !important; }
+    .cat-card .cat-icon { font-size: 16px !important; }
+    .cat-card .cat-name { font-size: 8px !important; }
+    .cat-card { padding: 8px 4px !important; }
+    .products-grid-3,
+    .products-grid-4,
+    .products-grid-5 { grid-template-columns: repeat(2, 1fr) !important; gap: 6px !important; }
+    .hero-text h1 { font-size: 20px !important; }
+    .nav-tab { font-size: 8px !important; padding: 10px 5px !important; }
+    .kpi-cards { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+    .kpi-card .kpi-val { font-size: 14px !important; }
+    .seller-header-stats { display: none !important; }
+  }
+
+  /* ---- INTERACTIVE STATES ---- */
+  .filter-pill { transition: all 0.2s; }
+  .filter-pill:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+  /* Smooth page transitions */
+  .page.active { animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- HEADER SEARCH focus ring ---- */
+  .search-bar:focus-within {
+    outline: 2px solid var(--primary);
+    border-radius: var(--radius-sm);
+  }
+
+  /* ---- BETTER TABLE SCROLL on mobile ---- */
+  @media (max-width: 768px) {
+    .order-table-card { overflow-x: auto; }
+    .inventory-table { overflow-x: auto; }
+    table { min-width: 500px; }
+    .seller-layout { grid-template-columns: 1fr !important; }
+  }
+
+  /* ---- COUPON RESPONSIVE ---- */
+  @media (max-width: 480px) {
+    .coupon-input-row { flex-direction: column; }
+    .coupon-input-row input { width: 100%; }
+    .coupon-input-row .btn-primary { width: 100%; justify-content: center; }
+  }
+
+  /* ---- APP BANNER RESPONSIVE ---- */
+  @media (max-width: 600px) {
+    .app-banner { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px 16px; }
+    .app-banner-text h3 { font-size: 15px; }
+    .app-btns { width: 100%; }
+    .app-btn { flex: 1; justify-content: center; }
+  }
+
+  /* ---- FLASH BAR RESPONSIVE ---- */
+  @media (max-width: 520px) {
+    .flash-bar { flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .flash-bar > span:last-child { display: none; }
+  }
+
+  /* ---- SUCCESS PAGE RESPONSIVE ---- */
+  @media (max-width: 480px) {
+    .success-btns { flex-direction: column; align-items: stretch; }
+    .success-btns button { width: 100%; justify-content: center; }
+    .tracking-stepper { overflow-x: auto; }
+    .tracking-step { min-width: 60px; }
+  }
+
+  /* ---- ACCOUNT PAGE HEADER ---- */
+  @media (max-width: 480px) {
+    .account-stats { gap: 12px; }
+    .account-stat .val { font-size: 16px; }
+    .account-info h2 { font-size: 16px; }
+  }
+
+  /* ---- SELLER DASHBOARD RESPONSIVE ---- */
+  @media (max-width: 480px) {
+    .kpi-cards { grid-template-columns: 1fr 1fr !important; }
+    .kpi-card { padding: 12px !important; }
+    .kpi-card .kpi-val { font-size: 15px !important; }
+  }
+
+  /* ---- CHECKOUT STEPS SMALL ---- */
+  @media (max-width: 400px) {
+    .checkout-steps { padding: 10px; }
+    .step-circle { width: 26px; height: 26px; font-size: 11px; }
+    .step-line { min-width: 8px; }
+  }
+
+  /* ---- PDP THUMBNAILS RESPONSIVE ---- */
+  @media (max-width: 480px) {
+    .thumbnails { gap: 5px; }
+    .thumb { width: 50px; height: 50px; font-size: 18px; }
+  }
+
+  /* ---- CART ITEM RESPONSIVE ---- */
+  @media (max-width: 400px) {
+    .cart-item { padding: 12px 10px; }
+    .cart-item-img { width: 56px; height: 56px; font-size: 26px; }
+    .cart-item-info h3 { font-size: 12px; }
+  }
+
+  /* ---- NAV TAB IMPROVEMENTS ---- */
+  @media (max-width: 768px) {
+    .page-nav { gap: 0; }
+    .nav-tab { padding: 11px 7px; }
+  }
+
+  /* ---- SECTION TITLE responsive ---- */
+  @media (max-width: 480px) {
+    .section-title { font-size: 13px; }
+    .view-all { font-size: 11px; }
+  }
+
+  /* ---- BREADCRUMB ---- */
+  .breadcrumb {
+    font-size: 12px;
+    color: var(--gray-400);
+    padding: 12px 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  @media (max-width: 480px) {
+    .breadcrumb { font-size: 10px; }
+  }
+
+  /* ---- CART ITEM PRICE row on mobile ---- */
+  @media (max-width: 480px) {
+    .cart-item-price {
+      width: 100%;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+  }
+
+  /* ---- ORDER ROW compact on mobile ---- */
+  @media (max-width: 480px) {
+    .order-row { flex-wrap: wrap; }
+    .order-details { min-width: 100%; order: 2; }
+    .order-thumb { order: 1; }
+    .order-actions { order: 4; margin-top: 4px; width: 100%; }
+    .order-amount { order: 3; margin-left: auto; }
+  }
 </style>
 </head>
 <body>
@@ -2832,7 +3130,7 @@
       </div>
     </div>
     <div style="background:var(--green-light);border-radius:var(--radius);padding:12px 16px;margin-bottom:20px;font-size:12px;color:var(--gray-700);display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-      <span style="font-size:18px">📧</span> Confirmation sent to <strong>priya@email.com</strong> &nbsp;·&nbsp; SMS to <strong>+91-98765-43210</strong>
+      <span style="font-size:18px">📧</span> Confirmation sent to <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8afaf8e3f3ebcaefe7ebe3e6a4e9e5e7">[email&#160;protected]</a></strong> &nbsp;·&nbsp; SMS to <strong>+91-98765-43210</strong>
     </div>
     <div class="tracking-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap;gap:10px">
@@ -2890,7 +3188,7 @@
       <div class="avatar-circle">P</div>
       <div class="account-info">
         <h2>Priya Sharma</h2>
-        <p>priya.sharma@gmail.com · +91-98765-43210 · Gold Member 💎</p>
+        <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6010120919014e130801120d0120070d01090c4e030f0d">[email&#160;protected]</a> · +91-98765-43210 · Gold Member 💎</p>
       </div>
       <div class="account-stats">
         <div class="account-stat"><div class="val">23</div><div class="lbl">Orders</div></div>
@@ -3080,7 +3378,7 @@
   <div id="footer-seller"></div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Inject shared header/footer
   const pages = ['home','plp','pdp','cart','checkout','success','account','search','seller'];
   pages.forEach(id => {
@@ -3213,17 +3511,283 @@
       document.querySelectorAll('.timer-box').forEach((box, i) => {
         const vals = [h, m, s];
         const labels = ['HRS','MIN','SEC'];
-        box.innerHTML = String(vals[i]).padStart(2,'0') + `<small>${labels[i]}</small>`;
+        box.innerHTML = String(vals[i]).padStart(2,'0') + `<small>${labels[i]}</small`;
       });
     }, 1000);
   })();
 
-  // Prevent mobile scroll bleed when filter is open
-  document.addEventListener('touchmove', function(e) {
-    if (document.getElementById('filter-overlay').classList.contains('show')) {
-      if (!e.target.closest('.filter-sidebar')) e.preventDefault();
+  // ==========================================
+  // ENHANCED INTERACTIVITY ADDITIONS
+  // ==========================================
+
+  // Toast notification system
+  function showToast(msg) {
+    let toast = document.getElementById('si-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'si-toast';
+      toast.className = 'toast';
+      document.body.appendChild(toast);
     }
-  }, { passive: false });
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => toast.classList.remove('show'), 2200);
+  }
+
+  // Add to Cart with feedback
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.add-cart-btn');
+    if (btn) {
+      e.stopPropagation();
+      const orig = btn.textContent;
+      btn.textContent = '✓ Added!';
+      btn.classList.add('adding');
+      // Update cart badge
+      document.querySelectorAll('.badge').forEach((b, i) => {
+        if (i === 0) b.textContent = parseInt(b.textContent || '0') + 1;
+      });
+      document.querySelectorAll('.mob-badge').forEach(b => {
+        b.textContent = parseInt(b.textContent || '0') + 1;
+      });
+      showToast('🛒 Added to cart!');
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.classList.remove('adding');
+      }, 1500);
+    }
+  });
+
+  // Wishlist heart toggle
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.wishlist-btn');
+    if (btn) {
+      e.stopPropagation();
+      if (btn.classList.contains('loved')) {
+        btn.classList.remove('loved');
+        btn.textContent = '♡';
+        showToast('💔 Removed from wishlist');
+      } else {
+        btn.classList.add('loved');
+        btn.textContent = '❤️';
+        showToast('❤️ Added to wishlist!');
+      }
+    }
+  });
+
+  // Qty stepper (cart page)
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.qty-btn');
+    if (btn) {
+      const stepper = btn.closest('.qty-stepper');
+      const val = stepper.querySelector('.qty-val');
+      let n = parseInt(val.textContent) || 1;
+      if (btn.textContent.trim() === '+') n = Math.min(n + 1, 10);
+      else if (btn.textContent.trim() === '−' || btn.textContent.trim() === '-') n = Math.max(n - 1, 1);
+      val.textContent = n;
+    }
+  });
+
+  // Filter pill toggle
+  document.addEventListener('click', function(e) {
+    const pill = e.target.closest('.filter-pill');
+    if (pill) {
+      const parent = pill.closest('.filter-pills');
+      if (parent) {
+        parent.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+      }
+    }
+  });
+
+  // Header icon click → navigate to page
+  document.addEventListener('click', function(e) {
+    const icon = e.target.closest('.header-icon');
+    if (!icon) return;
+    const label = icon.querySelector('.icon-label');
+    const iconEl = icon.querySelector('.icon');
+    const txt = (label && label.textContent) || (iconEl && iconEl.textContent) || '';
+    if (txt.includes('Cart') || txt.includes('🛒')) {
+      const tab = document.querySelector('.nav-tab:nth-child(5)');
+      showPage('cart', tab);
+    } else if (txt.includes('Account') || txt.includes('👤')) {
+      const tab = document.querySelector('.nav-tab:nth-child(8)');
+      showPage('account', tab);
+    } else if (txt.includes('Wishlist') || txt.includes('❤️')) {
+      showToast('❤️ Your wishlist — coming soon!');
+    }
+  });
+
+  // Mobile bottom nav wired to pages
+  document.querySelectorAll('.mob-nav-item').forEach(item => {
+    item.addEventListener('click', function() {
+      const icon = this.querySelector('.mob-icon');
+      if (!icon) return;
+      const t = icon.textContent;
+      const tabs = document.querySelectorAll('.nav-tab');
+      const map = { '🏠': ['home', 0], '📋': ['plp', 1], '🛒': ['cart', 3], '👤': ['account', 6], '🔍': ['search', 7] };
+      for (const [emoji, [page, idx]] of Object.entries(map)) {
+        if (t.includes(emoji)) { showPage(page, tabs[idx]); break; }
+      }
+    });
+  });
+
+  // Search bar submit → go to search page
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      const inp = e.target;
+      if (inp.tagName === 'INPUT' && inp.closest('.search-bar')) {
+        const tab = document.querySelector('.nav-tab:nth-child(9)');
+        showPage('search', tab);
+      }
+    }
+  });
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('search-btn')) {
+      const tab = document.querySelector('.nav-tab:nth-child(9)');
+      showPage('search', tab);
+    }
+  });
+
+  // Product card click → go to PDP
+  document.addEventListener('click', function(e) {
+    const card = e.target.closest('.product-card');
+    if (card && !e.target.closest('.add-cart-btn') && !e.target.closest('.wishlist-btn')) {
+      const tab = document.querySelector('.nav-tab:nth-child(4)');
+      showPage('pdp', tab);
+    }
+  });
+
+  // Category cards → go to PLP
+  document.addEventListener('click', function(e) {
+    const card = e.target.closest('.cat-card');
+    if (card) {
+      const tab = document.querySelector('.nav-tab:nth-child(3)');
+      showPage('plp', tab);
+    }
+  });
+
+  // View All links → go to PLP
+  document.addEventListener('click', function(e) {
+    const va = e.target.closest('.view-all');
+    if (va) {
+      const tab = document.querySelector('.nav-tab:nth-child(3)');
+      showPage('plp', tab);
+    }
+  });
+
+  // Logo clicks → home
+  document.addEventListener('click', function(e) {
+    const logo = e.target.closest('.site-logo, .logo-nav, .footer-brand .logo');
+    if (logo) {
+      const tab = document.querySelector('.nav-tab:nth-child(2)');
+      showPage('home', tab);
+    }
+  });
+
+  // "Continue Shopping" / "Shop Now" → home
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('button, a');
+    if (!btn) return;
+    const txt = btn.textContent;
+    if (txt.includes('Continue Shopping') || txt.includes('Shop Now') || txt.includes('শপিং করুন')) {
+      showPage('home', document.querySelector('.nav-tab:nth-child(2)'));
+    } else if (txt.includes('Proceed to Checkout') || txt.includes('Place Order')) {
+      if (txt.includes('Place Order')) {
+        showPage('success', document.querySelector('.nav-tab:nth-child(7)'));
+      } else {
+        showPage('checkout', document.querySelector('.nav-tab:nth-child(6)'));
+      }
+    } else if (txt.includes('Track Order') || txt.includes('Track')) {
+      showPage('success', document.querySelector('.nav-tab:nth-child(7)'));
+    }
+  });
+
+  // Thumbnail click — swap main image emoji
+  document.addEventListener('click', function(e) {
+    const thumb = e.target.closest('.thumb');
+    if (thumb) {
+      const gallery = thumb.closest('.gallery-area');
+      if (gallery) {
+        gallery.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+        const mainImg = gallery.querySelector('.main-img');
+        if (mainImg) {
+          const thumbTxt = thumb.textContent.trim();
+          // Preserve zoom button
+          const zoom = mainImg.querySelector('.zoom-btn');
+          mainImg.textContent = thumbTxt;
+          if (zoom) mainImg.appendChild(zoom);
+        }
+      }
+    }
+  });
+
+  // Delivery "Deliver Here" button → checkout
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('button');
+    if (btn && btn.textContent.includes('Deliver Here')) {
+      showPage('checkout', document.querySelector('.nav-tab:nth-child(6)'));
+    }
+  });
+
+  // Lang toggle
+  document.addEventListener('click', function(e) {
+    const span = e.target.closest('.lang-toggle span');
+    if (span) {
+      const parent = span.closest('.lang-toggle');
+      parent.querySelectorAll('span').forEach(s => s.classList.remove('on'));
+      span.classList.add('on');
+      showToast(span.textContent === 'HI' ? '🇮🇳 Hindi mode — coming soon!' : '🇬🇧 English mode active');
+    }
+  });
+
+  // Seller "Ship Now" / "Process" buttons
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('button');
+    if (btn && btn.textContent.includes('Ship Now')) {
+      showToast('📦 Shipment initiated!');
+    } else if (btn && btn.textContent.includes('Restock')) {
+      showToast('📋 Restock order placed!');
+    } else if (btn && btn.textContent.includes('Process')) {
+      showToast('⚙️ Order being processed...');
+    } else if (btn && btn.textContent.includes('Export CSV')) {
+      showToast('📥 CSV export started!');
+    }
+  });
+
+  // Mobile filter toggle — fix for search page which has a different id
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('mobile-filter-toggle') || e.target.closest('.mobile-filter-toggle')) {
+      openFilter();
+    }
+  });
+
 </script>
+<!-- TOAST ELEMENT -->
+<div id="si-toast" class="toast"></div>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-bottom-nav">
+  <div class="mobile-bottom-nav-inner">
+    <div class="mob-nav-item active" onclick="showPage('home', document.querySelectorAll('.nav-tab')[0])">
+      <span class="mob-icon">🏠</span>Home
+    </div>
+    <div class="mob-nav-item" onclick="showPage('plp', document.querySelectorAll('.nav-tab')[1])">
+      <span class="mob-icon">📋</span>Listing
+    </div>
+    <div class="mob-nav-item" onclick="showPage('cart', document.querySelectorAll('.nav-tab')[3])">
+      <span class="mob-icon">🛒</span>Cart
+      <span class="mob-badge">3</span>
+    </div>
+    <div class="mob-nav-item" onclick="showPage('search', document.querySelectorAll('.nav-tab')[7])">
+      <span class="mob-icon">🔍</span>Search
+    </div>
+    <div class="mob-nav-item" onclick="showPage('account', document.querySelectorAll('.nav-tab')[6])">
+      <span class="mob-icon">👤</span>Account
+    </div>
+  </div>
+</nav>
+
 </body>
 </html>
